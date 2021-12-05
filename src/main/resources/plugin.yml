@@ -1,0 +1,4 @@
+name: PlayerStats
+version: '${project.version}'
+main: me.skippysunday.playerstats
+api-version: 1.18

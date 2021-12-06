@@ -1,4 +1,17 @@
 name: PlayerStats
 version: '${project.version}'
-main: me.skippysunday.playerstats
+main: me.skippysunday.playerstats.PlayerStats
 api-version: 1.18
+
+commands:
+  where:
+    description: Get location information about a player
+
+permissions:
+  playerstats:
+    description: All encompassing permission for all PS commands
+    children:
+      playerstats.location: true
+
+  playerstats.where:
+    description: Alllows usage of /where command

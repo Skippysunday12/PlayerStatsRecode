@@ -7,6 +7,8 @@ commands:
   where:
     description: Get location information about a player
 
+  test:
+
 permissions:
   playerstats:
     description: All encompassing permission for all PS commands

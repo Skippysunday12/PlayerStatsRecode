@@ -1,13 +1,11 @@
 name: PlayerStats
 version: '${project.version}'
 main: me.skippysunday.playerstats.PlayerStats
-api-version: 1.18
+api-version: 1.16
 
 commands:
   where:
     description: Get location information about a player
-
-  test:
 
 permissions:
   playerstats:

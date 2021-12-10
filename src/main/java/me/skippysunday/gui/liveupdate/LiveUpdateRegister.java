@@ -1,17 +1,13 @@
-package me.skippysunday.gui;
+package me.skippysunday.gui.liveupdate;
 
 import me.skippysunday.playerstats.PlayerStats;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
-import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
-import org.bukkit.event.inventory.InventoryCloseEvent;
 import org.bukkit.scheduler.BukkitScheduler;
 import org.bukkit.scheduler.BukkitTask;
 
 import java.util.HashMap;
-
-import static me.skippysunday.gui.LiveUpdateRegister.updates;
 
 public class LiveUpdateRegister implements Listener {
 

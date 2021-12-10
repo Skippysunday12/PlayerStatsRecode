@@ -1,4 +1,4 @@
-package me.skippysunday.gui;
+package me.skippysunday.gui.liveupdate;
 
 import me.skippysunday.playerstats.PlayerStats;
 import org.bukkit.event.EventHandler;
@@ -6,7 +6,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.InventoryCloseEvent;
 import org.bukkit.scheduler.BukkitRunnable;
 
-import static me.skippysunday.gui.LiveUpdateRegister.updates;
+import static me.skippysunday.gui.liveupdate.LiveUpdateRegister.updates;
 
 public class LiveUpdateListener implements Listener {
     @EventHandler
@@ -18,6 +18,6 @@ public class LiveUpdateListener implements Listener {
             public void run() {
                 if (e.getPlayer().getOpenInventory().getTitle().equalsIgnoreCase("crafting")) {
                     updates.remove(e.getPlayer()).cancel();
-                }}}.runTaskLater(PlayerStats.getPlugin(PlayerStats.class), 2);
+                }}}.runTaskLater(PlayerStats.getPlugin(PlayerStats.class), 1);
     }
 }

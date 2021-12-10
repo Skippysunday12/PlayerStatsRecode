@@ -1,6 +1,9 @@
 package me.skippysunday.commands.commands;
 
+import me.skippysunday.Colors;
 import me.skippysunday.commands.base.PSCommand;
+import me.skippysunday.gui.WhereGui;
+import me.skippysunday.gui.liveupdate.LiveUpdateRegister;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
@@ -31,7 +34,7 @@ public class Where extends PSCommand {
             return false;
 
         else if(args.length != 2) {
-            sender.sendMessage(error + "Usage: /where <player> <coordinates | surface>");
+            sender.sendMessage(Colors.ERROR + "Usage: /where <player> <coordinates | surface>");
             return true;
         }
 
@@ -39,13 +42,13 @@ public class Where extends PSCommand {
 
         if(args[1].equalsIgnoreCase("coordinates")) {
             Location location = target.getLocation();
-            sender.sendMessage(playerName + args[0] + base + " is at: " + ChatColor.GREEN + "X: " + (int) location.getX() +
+            sender.sendMessage(Colors.PLAYER + args[0] + Colors.BASE + " is at: " + ChatColor.GREEN + "X: " + (int) location.getX() +
                     ChatColor.BLUE + " Y: " + (int) location.getY() + ChatColor.DARK_PURPLE + " Z: " + (int) location.getZ());
             return true;
         }
 
         else if(args[1].equalsIgnoreCase("surface")) {
-            String pos = "" + stat;
+            String pos = "" + Colors.STAT;
 
             if(target.isFlying()) pos += "FLYING";
             else if(target.getFallDistance() == 0) {
@@ -55,12 +58,19 @@ public class Where extends PSCommand {
             else if(target.getFallDistance() > 0) pos += "FALLING";
             else if(target.isSwimming()) pos += "SWIMMING";
             else {
-                sender.sendMessage(playerName + args[0] + base + " cannot be located!");
+                sender.sendMessage(Colors.PLAYER + args[0] + Colors.BASE + " cannot be located!");
                 return true;
             }
 
-            sender.sendMessage(playerName + args[0] + base + " is currently " + pos);
+            sender.sendMessage(Colors.PLAYER + args[0] + Colors.BASE + " is currently " + pos);
             return false;
+        } else if (args[1].equalsIgnoreCase("see")) {
+            if(!(sender instanceof Player)) {
+                sender.sendMessage(Colors.ERROR + "You must be a player to run this command!");
+                return false;
+            }
+
+            LiveUpdateRegister.registerUpdater((Player) sender, new WhereGui(target, sender.getName()));
         }
 
 
@@ -74,6 +84,7 @@ public class Where extends PSCommand {
             List<String> argus = new ArrayList<>();
             argus.add("coordinates");
             argus.add("surface");
+            argus.add("see");
             List<String> results = new ArrayList<>();
 
             for(String s : argus) {

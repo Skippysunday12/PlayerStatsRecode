@@ -1,6 +1,7 @@
-package me.skippysunday.gui;
+package me.skippysunday.gui.where;
 
 import me.skippysunday.Colors;
+import me.skippysunday.gui.GuiUtils;
 import me.skippysunday.gui.liveupdate.InventoryCreator;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -27,18 +28,18 @@ public class WhereGui implements InventoryCreator {
 
     @Override
     public Inventory createInv() {
-        Inventory inv = Bukkit.createInventory(null, 18, player.getName());
+        Inventory inv = Bukkit.createInventory(null, 18, Colors.PLAYER + player.getName());
 
         ItemStack item = GuiUtils.getHead(player);
-        SkullMeta headMeta = (SkullMeta) item.getItemMeta();
+        ItemMeta meta = item.getItemMeta();
 
-        headMeta.setDisplayName(Colors.PLAYER + player.getName());
-        headMeta.getPersistentDataContainer().set(GuiUtils.key, PersistentDataType.STRING, "where-head");
-        item.setItemMeta(headMeta);
+        meta.setDisplayName(Colors.PLAYER + player.getName());
+        meta.getPersistentDataContainer().set(GuiUtils.key, PersistentDataType.STRING, "where-head");
+        item.setItemMeta(meta);
         inv.setItem(4, item);
 
         item = new ItemStack(Material.MAP);
-        ItemMeta meta = item.getItemMeta();
+        meta = item.getItemMeta();
 
         meta.setDisplayName(Colors.STAT + "Location: ");
         List<String> lore = new ArrayList<>();

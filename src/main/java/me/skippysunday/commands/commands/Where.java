@@ -2,7 +2,7 @@ package me.skippysunday.commands.commands;
 
 import me.skippysunday.Colors;
 import me.skippysunday.commands.base.PSCommand;
-import me.skippysunday.gui.WhereGui;
+import me.skippysunday.gui.where.WhereGui;
 import me.skippysunday.gui.liveupdate.LiveUpdateRegister;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -71,6 +71,11 @@ public class Where extends PSCommand {
             }
 
             LiveUpdateRegister.registerUpdater((Player) sender, new WhereGui(target, sender.getName()));
+        }
+
+        else {
+            sender.sendMessage(Colors.ERROR + "Usage: /where <player> <coordinates | surface>");
+            return true;
         }
 
 

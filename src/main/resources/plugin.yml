@@ -7,11 +7,18 @@ commands:
   where:
     description: Get location information about a player
 
+  health:
+    description: Get health related info
+
 permissions:
   playerstats:
     description: All encompassing permission for all PS commands
     children:
       playerstats.location: true
+      playerstats.health: true
 
   playerstats.where:
     description: Alllows usage of /where command
+
+  playerstats.health:
+    description: Allows use of /health command

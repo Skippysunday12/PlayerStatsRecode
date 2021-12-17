@@ -25,6 +25,10 @@ public class LiveUpdateRegister implements Listener {
                 new LiveUpdater(player, creator), 20, 20));
     }
 
+    public static void cancelTask(Player player) {
+        updates.get(player).cancel();
+    }
+
 }
 
 class LiveUpdater implements Runnable {

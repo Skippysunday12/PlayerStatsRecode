@@ -10,15 +10,22 @@ commands:
   health:
     description: Get health related info
 
+  inv:
+    description: See contents of Player inventories
+
 permissions:
   playerstats:
     description: All encompassing permission for all PS commands
     children:
       playerstats.location: true
       playerstats.health: true
+      playerstats.inv: true
 
   playerstats.where:
     description: Alllows usage of /where command
 
   playerstats.health:
     description: Allows use of /health command
+
+  playerstats.inv:
+    description: Allows use of /inv command

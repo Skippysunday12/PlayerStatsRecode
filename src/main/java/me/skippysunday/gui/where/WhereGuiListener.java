@@ -2,6 +2,7 @@ package me.skippysunday.gui.where;
 
 import me.skippysunday.Colors;
 import me.skippysunday.gui.GuiUtils;
+import me.skippysunday.playerstats.PlayerStats;
 import org.bukkit.Bukkit;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;

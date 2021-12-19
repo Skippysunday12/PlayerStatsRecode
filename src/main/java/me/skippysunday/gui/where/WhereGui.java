@@ -5,6 +5,7 @@ import me.skippysunday.gui.GuiUtils;
 import me.skippysunday.gui.liveupdate.InventoryCreator;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
+import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
@@ -101,6 +102,21 @@ public class WhereGui implements InventoryCreator {
         meta.getPersistentDataContainer().set(GuiUtils.key, PersistentDataType.STRING, "ps-identifier");
         item.setItemMeta(meta);
         inv.setItem(15, item);
+
+        item = new ItemStack(Material.RED_BED);
+        meta = item.getItemMeta();
+        meta.setDisplayName(Colors.STAT + "Spawn location");
+        lore.clear();
+        Location loc = player.getBedSpawnLocation() == null ? player.getWorld().getSpawnLocation() : player.getBedSpawnLocation();
+        lore.add(ChatColor.GRAY + "Click to teleport");
+        lore.add(ChatColor.GREEN + "X: " + loc.getX());
+        lore.add(ChatColor.BLUE + "Y: " + loc.getY());
+        lore.add(ChatColor.DARK_PURPLE + "Z: " + loc.getZ());
+        meta.setLore(lore);
+        meta.getPersistentDataContainer().set(GuiUtils.key, PersistentDataType.STRING, "where-bed-" + player.getName() + "-" + ownerName);
+        item.setItemMeta(meta);
+        inv.setItem(13, item);
+
 
         return inv;
     }

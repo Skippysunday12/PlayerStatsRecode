@@ -30,11 +30,11 @@ public class Where extends PSCommand {
 
         if(!label.equalsIgnoreCase("where")) return false;
 
-        if(!checkUser(sender, "playerstats.where", args, "/where <player> <coordinates | surface>"))
+        if(!checkUser(sender, "playerstats.where", args, "/where <player> <coordinates | surface | spawn | see>"))
             return false;
 
         else if(args.length != 2) {
-            sender.sendMessage(Colors.ERROR + "Usage: /where <player> <coordinates | surface>");
+            sender.sendMessage(Colors.ERROR + "Usage: /where <player> <coordinates | surface | spawn | see>");
             return true;
         }
 
@@ -64,7 +64,16 @@ public class Where extends PSCommand {
 
             sender.sendMessage(Colors.PLAYER + args[0] + Colors.BASE + " is currently " + pos);
             return false;
-        } else if (args[1].equalsIgnoreCase("see")) {
+        }
+
+        else if(args[1].equalsIgnoreCase("spawn")) {
+            Location loc = target.getBedSpawnLocation() == null ? target.getWorld().getSpawnLocation() : target.getBedSpawnLocation();
+            sender.sendMessage(Colors.PLAYER + target.getName() + Colors.BASE + " spawns at: " + ChatColor.GREEN + "X: "
+            + loc.getX() + ChatColor.BLUE + " Y: " + loc.getY() + ChatColor.DARK_PURPLE + " Z: " + loc.getZ());
+            return false;
+        }
+
+        else if (args[1].equalsIgnoreCase("see")) {
             if(!(sender instanceof Player)) {
                 sender.sendMessage(Colors.ERROR + "You must be a player to run this command!");
                 return false;
@@ -74,7 +83,7 @@ public class Where extends PSCommand {
         }
 
         else {
-            sender.sendMessage(Colors.ERROR + "Usage: /where <player> <coordinates | surface>");
+            sender.sendMessage(Colors.ERROR + "Usage: /where <player> <coordinates | surface | spawn | see>");
             return true;
         }
 
@@ -90,6 +99,7 @@ public class Where extends PSCommand {
             argus.add("coordinates");
             argus.add("surface");
             argus.add("see");
+            argus.add("spawn");
             List<String> results = new ArrayList<>();
 
             for(String s : argus) {

@@ -3,6 +3,7 @@ package me.skippysunday.playerstats;
 import me.skippysunday.commands.base.PSCommand;
 import me.skippysunday.commands.commands.Health;
 import me.skippysunday.commands.commands.InventorySee;
+import me.skippysunday.commands.commands.PotionsCommand;
 import me.skippysunday.commands.commands.Where;
 import me.skippysunday.gui.inventory.BaseInvListener;
 import me.skippysunday.gui.inventory.InventoryBaseInv;
@@ -17,7 +18,7 @@ public final class PlayerStats extends JavaPlugin {
         this.getServer().getPluginManager().registerEvents(new LiveUpdateListener(), this);
         this.getServer().getPluginManager().registerEvents(new WhereGuiListener(), this);
         this.getServer().getPluginManager().registerEvents(new BaseInvListener(), this);
-        PSCommand.registerCommands(this, new Where(), new Health(), new InventorySee());
+        PSCommand.registerCommands(this, new Where(), new Health(), new InventorySee(), new PotionsCommand());
     }
 
     @Override

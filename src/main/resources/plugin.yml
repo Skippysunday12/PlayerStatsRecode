@@ -13,6 +13,9 @@ commands:
   inv:
     description: See contents of Player inventories
 
+  potions:
+    description: See all potion effects on a player
+
 permissions:
   playerstats:
     description: All encompassing permission for all PS commands
@@ -20,6 +23,7 @@ permissions:
       playerstats.location: true
       playerstats.health: true
       playerstats.inv: true
+      playerstats.potions: true
 
   playerstats.where:
     description: Alllows usage of /where command
@@ -29,3 +33,6 @@ permissions:
 
   playerstats.inv:
     description: Allows use of /inv command
+
+  playerstats.potions:
+    description: Allows use of /potions command

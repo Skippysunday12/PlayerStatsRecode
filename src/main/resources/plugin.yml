@@ -16,6 +16,9 @@ commands:
   potions:
     description: See all potion effects on a player
 
+  permissions:
+    description: View permissions of a player
+
 permissions:
   playerstats:
     description: All encompassing permission for all PS commands
@@ -24,6 +27,7 @@ permissions:
       playerstats.health: true
       playerstats.inv: true
       playerstats.potions: true
+      playerstats.permissions: true
 
   playerstats.where:
     description: Alllows usage of /where command
@@ -36,3 +40,6 @@ permissions:
 
   playerstats.potions:
     description: Allows use of /potions command
+
+  playerstats.permissions:
+    description: Allows use of /permissions command

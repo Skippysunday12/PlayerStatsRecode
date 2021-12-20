@@ -20,7 +20,7 @@ commands:
     description: View permissions of a player
 
 permissions:
-  playerstats:
+  playerstats.*:
     description: All encompassing permission for all PS commands
     children:
       playerstats.location: true

@@ -1,0 +1,3 @@
+# Update time in ticks (20 ticks = 1 second)
+# Will not recommend going under 10, may cause stats to reopen, and error in console
+liveupdatetime: 20

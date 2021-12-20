@@ -57,7 +57,7 @@ public class Potions implements InventoryCreator {
             meta.setDisplayName(Colors.STAT + EffectMaterials.valueOf(e.getType().getName()).name);
             List<String> lore = new ArrayList<>();
             lore.add(Colors.BASE + "Ticks left: " + e.getDuration());
-            lore.add(Colors.BASE + "Strength: " + e.getAmplifier() + 1);
+            lore.add(Colors.BASE + "Strength: " + (e.getAmplifier() + 1));
             lore.add(Colors.BASE + "Has particles: " + (e.hasParticles() ? ChatColor.GREEN : ChatColor.RED) + e.hasParticles());
             meta.setLore(lore);
             meta.getPersistentDataContainer().set(GuiUtils.key, PersistentDataType.STRING, "ps-identifier");

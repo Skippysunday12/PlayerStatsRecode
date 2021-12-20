@@ -82,7 +82,7 @@ public class WhereGui implements InventoryCreator {
             meta = item.getItemMeta();
             meta.setDisplayName(Colors.STAT + "Falling");
             lore.add(Colors.PLAYER + player.getName() + ChatColor.GRAY + " has been falling");
-            lore.add("for " + Colors.STAT + (int) player.getFallDistance() + ChatColor.GRAY + " blocks");
+            lore.add(ChatColor.GRAY + "for " + Colors.STAT + (int) player.getFallDistance() + ChatColor.GRAY + " blocks");
         }
 
         else if(player.isSwimming()) {

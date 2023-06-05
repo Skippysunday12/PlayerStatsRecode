@@ -4,23 +4,14 @@ import me.skippysunday.gui.GuiUtils;
 import me.skippysunday.gui.liveupdate.LiveUpdateRegister;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
-import org.bukkit.event.EventHandler;
-import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.persistence.PersistentDataType;
 
-public class BaseInvListener implements Listener {
+public class BaseInvListener {
 
-    @EventHandler
-    public void onInvClick(InventoryClickEvent event) {
+    public static void onClick(InventoryClickEvent event) {
         ItemStack item = event.getCurrentItem();
-
-        if(item == null || !item.hasItemMeta() || !item.getItemMeta().getPersistentDataContainer()
-                .has(GuiUtils.key, PersistentDataType.STRING)) return;
-
-        event.setCancelled(true);
-
         String[] keys = item.getItemMeta().getPersistentDataContainer().get(GuiUtils.key, PersistentDataType.STRING).split("-");
 
         if(keys[0].startsWith("fullinv")) {

@@ -39,7 +39,7 @@
                         </goals>
                         <configuration>
                             <createDependencyReducedPom>false</createDependencyReducedPom>
-                            <outputFile>C:\Users\Skippy\Desktop\Servers\1.18\plugins\ps.jar</outputFile>
+                            <outputFile>../servers/latest/plugins/ps.jar</outputFile>
                         </configuration>
                     </execution>
                 </executions>

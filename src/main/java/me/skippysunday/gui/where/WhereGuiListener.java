@@ -2,12 +2,9 @@ package me.skippysunday.gui.where;
 
 import me.skippysunday.Colors;
 import me.skippysunday.gui.GuiUtils;
-import me.skippysunday.playerstats.PlayerStats;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
-import org.bukkit.event.EventHandler;
-import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.persistence.PersistentDataType;

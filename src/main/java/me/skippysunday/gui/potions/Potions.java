@@ -2,14 +2,11 @@ package me.skippysunday.gui.potions;
 
 import me.skippysunday.Colors;
 import me.skippysunday.gui.GuiUtils;
-import me.skippysunday.gui.liveupdate.InventoryCreator;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
-import org.bukkit.entity.Item;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
-import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.persistence.PersistentDataType;
@@ -17,8 +14,9 @@ import org.bukkit.potion.PotionEffect;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Supplier;
 
-public class Potions implements InventoryCreator {
+public class Potions implements Supplier<Inventory> {
 
     private final Player player;
 
@@ -27,7 +25,7 @@ public class Potions implements InventoryCreator {
     }
 
     @Override
-    public Inventory createInv() {
+    public Inventory get() {
         Inventory inv = Bukkit.createInventory(null, 45, Colors.PLAYER + player.getName() + "'s " +
                 Colors.BASE + "potion effects");
 

@@ -2,7 +2,6 @@ package me.skippysunday.gui.where;
 
 import me.skippysunday.Colors;
 import me.skippysunday.gui.GuiUtils;
-import me.skippysunday.gui.liveupdate.InventoryCreator;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
@@ -11,13 +10,13 @@ import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
-import org.bukkit.inventory.meta.SkullMeta;
 import org.bukkit.persistence.PersistentDataType;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Supplier;
 
-public class WhereGui implements InventoryCreator {
+public class WhereGui implements Supplier<Inventory> {
 
     private final Player player;
     private final String ownerName;
@@ -28,7 +27,7 @@ public class WhereGui implements InventoryCreator {
     }
 
     @Override
-    public Inventory createInv() {
+    public Inventory get() {
         Inventory inv = Bukkit.createInventory(null, 18, Colors.PLAYER + player.getName());
 
         ItemStack item = GuiUtils.getHead(player);

@@ -2,7 +2,6 @@ package me.skippysunday.gui.opinfo;
 
 import me.skippysunday.Colors;
 import me.skippysunday.gui.GuiUtils;
-import me.skippysunday.gui.liveupdate.InventoryCreator;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
@@ -14,8 +13,9 @@ import org.bukkit.persistence.PersistentDataType;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Supplier;
 
-public class OpInfoInv implements InventoryCreator {
+public class OpInfoInv implements Supplier<Inventory> {
 
     private final Player player;
 
@@ -25,7 +25,7 @@ public class OpInfoInv implements InventoryCreator {
 
 
     @Override
-    public Inventory createInv() {
+    public Inventory get() {
         Inventory inv = Bukkit.createInventory(null, 18, Colors.PLAYER + player.getName());
 
         ItemStack item = GuiUtils.getHead(player);

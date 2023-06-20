@@ -1,9 +1,7 @@
 package me.skippysunday.gui.inventory;
 
-import com.sun.tools.javac.jvm.Items;
 import me.skippysunday.Colors;
 import me.skippysunday.gui.GuiUtils;
-import me.skippysunday.gui.liveupdate.InventoryCreator;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
@@ -15,8 +13,9 @@ import org.bukkit.persistence.PersistentDataType;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Supplier;
 
-public class InventoryBaseInv implements InventoryCreator {
+public class InventoryBaseInv implements Supplier<Inventory> {
 
     private final Player target;
     private final Player sender;
@@ -27,7 +26,7 @@ public class InventoryBaseInv implements InventoryCreator {
     }
 
     @Override
-    public Inventory createInv() {
+    public Inventory get() {
         Inventory inv = Bukkit.createInventory(null, 45, Colors.PLAYER + target.getName() + "'s "
                 + Colors.BASE + "inventory stats");
 

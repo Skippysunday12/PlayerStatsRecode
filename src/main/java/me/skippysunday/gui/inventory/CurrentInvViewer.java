@@ -2,22 +2,17 @@ package me.skippysunday.gui.inventory;
 
 import me.skippysunday.Colors;
 import me.skippysunday.gui.GuiUtils;
-import me.skippysunday.gui.liveupdate.InventoryCreator;
 import org.bukkit.Bukkit;
-import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
-import org.bukkit.event.inventory.InventoryType;
-import org.bukkit.inventory.EnchantingInventory;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.persistence.PersistentDataType;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.function.Supplier;
 
-public class CurrentInvViewer implements InventoryCreator {
+public class CurrentInvViewer implements Supplier<Inventory> {
 
     private final Player player;
     private final Inventory empty;
@@ -35,7 +30,7 @@ public class CurrentInvViewer implements InventoryCreator {
 
 
     @Override
-    public Inventory createInv() {
+    public Inventory get() {
         if (player.getOpenInventory().getTitle().equalsIgnoreCase("crafting")) return empty;
 
         Inventory current = player.getOpenInventory().getTopInventory();

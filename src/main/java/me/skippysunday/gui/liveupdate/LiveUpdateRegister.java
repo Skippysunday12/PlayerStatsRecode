@@ -6,10 +6,12 @@ import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.Player;
 import org.bukkit.event.Listener;
+import org.bukkit.inventory.Inventory;
 import org.bukkit.scheduler.BukkitScheduler;
 import org.bukkit.scheduler.BukkitTask;
 
 import java.util.HashMap;
+import java.util.function.Supplier;
 
 public class LiveUpdateRegister implements Listener {
 
@@ -24,7 +26,7 @@ public class LiveUpdateRegister implements Listener {
         updateTime = file.getInt("liveupdatetime");
     }
 
-    public static void registerUpdater(Player player, InventoryCreator creator) {
+    public static void registerUpdater(Player player, Supplier<Inventory> creator) {
         updates.put(player, scheduler.runTaskTimer(PlayerStats.getPlugin(PlayerStats.class),
                 new LiveUpdater(player, creator), updateTime, updateTime));
     }
@@ -38,15 +40,15 @@ public class LiveUpdateRegister implements Listener {
 class LiveUpdater implements Runnable {
 
     private final Player player;
-    private final InventoryCreator inv;
+    private final Supplier<Inventory> inv;
 
-    public LiveUpdater(Player player, InventoryCreator inv) {
+    public LiveUpdater(Player player, Supplier<Inventory> inv) {
         this.player = player;
         this.inv = inv;
     }
 
     @Override
     public void run() {
-        player.openInventory(inv.createInv());
+        player.openInventory(inv.get());
     }
 }

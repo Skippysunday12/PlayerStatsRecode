@@ -1,7 +1,7 @@
 name: PlayerStats
 version: '${project.version}'
 main: me.skippysunday.playerstats.PlayerStats
-api-version: 1.16
+api-version: 1.20
 
 commands:
   where:
